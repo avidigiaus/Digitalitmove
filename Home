@@ -1,0 +1,148 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital IT Move | Premium IT Solutions</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+<nav class="navbar">
+<div class="logo">Digital IT Move</div>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Elevate Your Business With Expert IT & Marketing Solutions</h1>
+<p>Modern digital growth strategies for Australian businesses.</p>
+<a href="#contact" class="btn">Get Started</a>
+</div>
+</section>
+
+<section class="stats">
+<div class="card">
+<h2>99.8%</h2>
+<p>Network Uptime</p>
+</div>
+<div class="card">
+<h2>95%</h2>
+<p>SLA Compliance</p>
+</div>
+<div class="card">
+<h2>87%</h2>
+<p>First Call Resolution</p>
+</div>
+</section>
+
+<section class="services" id="services">
+<h2>Our Services</h2>
+<div class="service-grid">
+
+<div class="service-box">
+<i class="fas fa-laptop-code"></i>
+<h3>Web Development</h3>
+<p>High converting modern websites for business growth.</p>
+</div>
+
+<div class="service-box">
+<i class="fas fa-bullhorn"></i>
+<h3>Digital Marketing</h3>
+<p>SEO, PPC, Social Media & Lead Generation.</p>
+</div>
+
+<div class="service-box">
+<i class="fas fa-server"></i>
+<h3>IT Support</h3>
+<p>Helpdesk, Network, Security & Cloud Services.</p>
+</div>
+
+<div class="service-box">
+<i class="fas fa-chart-line"></i>
+<h3>Analytics</h3>
+<p>Transparent reporting & performance dashboards.</p>
+</div>
+
+</div>
+</section>
+
+<section class="pricing" id="pricing">
+<h2>Pricing Plans</h2>
+
+<div class="pricing-grid">
+
+<div class="price-card">
+<h3>Starter</h3>
+<h1>$600</h1>
+<p>/month</p>
+<ul>
+<li>Helpdesk Support</li>
+<li>Email Support</li>
+<li>Basic IT Assistance</li>
+</ul>
+<button>Choose Plan</button>
+</div>
+
+<div class="price-card featured">
+<h3>Business</h3>
+<h1>$1500</h1>
+<p>/month</p>
+<ul>
+<li>Level 1 & 2 Support</li>
+<li>VPN + Microsoft 365</li>
+<li>Priority Response</li>
+</ul>
+<button>Choose Plan</button>
+</div>
+
+<div class="price-card">
+<h3>Enterprise</h3>
+<h1>$4000+</h1>
+<p>/month</p>
+<ul>
+<li>Dedicated Resources</li>
+<li>Cloud + Security</li>
+<li>24/7 Support</li>
+</ul>
+<button>Choose Plan</button>
+</div>
+
+</div>
+</section>
+
+<section class="about" id="about">
+<h2>About Us</h2>
+<p>
+We are a globally operating company focused on IT excellence, digital growth,
+and long term business partnerships. Trusted by Australian businesses.
+</p>
+</section>
+
+<section class="contact" id="contact">
+<h2>Contact Us</h2>
+<form>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea placeholder="Your Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<footer>
+<p>Digital IT Move © 2026 | Melbourne Australia</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
