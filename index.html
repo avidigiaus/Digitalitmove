@@ -1,148 +1,604 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital IT Move | Premium IT Solutions</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Digital IT Move | Expert Digital Marketing & IT Services</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fbfdfe;
+      color: #1A2C3E;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* glassmorphism / modern styling */
+    .glass-card {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 82, 212, 0.08);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 40px -18px rgba(0,0,0,0.15);
+      border-color: rgba(0, 112, 243, 0.2);
+    }
+
+    /* buttons & accents */
+    .btn-primary {
+      background: linear-gradient(105deg, #0052D4 0%, #4361EE 100%);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,82,212,0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+      background: linear-gradient(105deg, #0040b0 0%, #2b4cd4 100%);
+      box-shadow: 0 8px 20px rgba(0,82,212,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #0052D4;
+      color: #0052D4;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #0052D410;
+      border-color: #003d9e;
+    }
+
+    /* navigation */
+    nav {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0052D4, #00A6FF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2f3f;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0052D4;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* hero */
+    .hero {
+      padding: 80px 0 70px;
+      background: linear-gradient(145deg, #ffffff 0%, #f5f9ff 100%);
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: #e9f0ff;
+      color: #0052D4;
+      border-radius: 60px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    /* sections */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid #ecf3f9;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #14273E, #0052D4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .section-sub {
+      font-size: 1.1rem;
+      color: #4a627a;
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+      border: 1px solid #eef2f8;
+      transition: 0.2s;
+    }
+
+    .counter-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0052D4;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #0052D4;
+      margin-bottom: 20px;
+    }
+
+    /* metric bars area */
+    .metrics-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+      background: #ffffffdd;
+      border-radius: 40px;
+      padding: 32px 28px;
+      backdrop-filter: blur(4px);
+      border: 1px solid #eef2ff;
+    }
+
+    .metric-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* footer */
+    footer {
+      background: #0A1927;
+      color: #cbd5e1;
+      padding: 48px 0 24px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 28px;
+      border: 1px solid #cfdfed;
+      background: white;
+      font-family: inherit;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        gap: 24px;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+        border-radius: 0 0 28px 28px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-btn {
+        display: block;
+      }
+      .hero-grid {
+        flex-direction: column;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* fade-up animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
-<header>
-<nav class="navbar">
-<div class="logo">Digital IT Move</div>
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#pricing">Pricing</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<nav>
+  <div class="nav-container">
+    <div class="logo"><i class="fas fa-microchip"></i> Digital IT Move</div>
+    <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#marketing">Marketing</a>
+      <a href="#it-services">IT Services</a>
+      <a href="#webdev">Web Dev</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 </nav>
-</header>
 
-<section class="hero" id="home">
-<div class="hero-content">
-<h1>Elevate Your Business With Expert IT & Marketing Solutions</h1>
-<p>Modern digital growth strategies for Australian businesses.</p>
-<a href="#contact" class="btn">Get Started</a>
-</div>
-</section>
+<main>
+  <!-- Hero section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-badge"><i class="fas fa-chart-line"></i> Australian IT specialists</span>
+        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;">Elevate Your Business with <span style="color:#0052D4;">Expert Digital Marketing & IT Services</span></h1>
+        <p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 32px;">Transform your technology business with integrated digital strategies & reliable IT services — designed specifically for the Australian market. We bridge technical expertise and strategic growth.</p>
+        <div><a href="#contact" class="btn-primary"><i class="fas fa-rocket"></i> Scale your business</a> <a href="#marketing" class="btn-outline" style="margin-left: 16px;">Explore services</a></div>
+      </div>
+      <div style="flex:1; text-align: center;"><i class="fas fa-chalkboard-user" style="font-size: 12rem; color: #cbdffc;"></i></div>
+    </div>
+  </section>
 
-<section class="stats">
-<div class="card">
-<h2>99.8%</h2>
-<p>Network Uptime</p>
-</div>
-<div class="card">
-<h2>95%</h2>
-<p>SLA Compliance</p>
-</div>
-<div class="card">
-<h2>87%</h2>
-<p>First Call Resolution</p>
-</div>
-</section>
+  <!-- Why Choose Us / Strategic Integration -->
+  <div class="container">
+    <div class="card-grid" style="margin-top: -40px; margin-bottom: 20px;">
+      <div class="glass-card" style="padding: 32px;"><i class="fas fa-chart-pie feature-icon"></i><h3>Strategic Integration</h3><p>Combining technical IT knowledge with data-driven digital strategies delivering measurable results for Australian tech businesses.</p></div>
+      <div class="glass-card" style="padding: 32px;"><i class="fas fa-shield-alt feature-icon"></i><h3>Technical Credibility</h3><p>Complex IT solutions require clear communication without oversimplifying — driving lead generation and engagement with integrity.</p></div>
+      <div class="glass-card" style="padding: 32px;"><i class="fas fa-chart-line feature-icon"></i><h3>Proven Results</h3><p>Data-driven campaigns with measurable ROI, multi-channel engagement, translating technical solutions into compelling messages.</p></div>
+    </div>
+  </div>
 
-<section class="services" id="services">
-<h2>Our Services</h2>
-<div class="service-grid">
+  <!-- Trusted by Australian Tech Leaders -->
+  <section style="padding: 20px 0 40px;">
+    <div class="container">
+      <div style="background: #eef3fc; border-radius: 48px; padding: 32px 24px; text-align: center;">
+        <h3 class="section-title" style="font-size:1.8rem;">Trusted by Australian Tech Leaders</h3>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; margin-top: 24px;">
+          <span class="badge-tag"><i class="fas fa-server"></i> Managed Service Providers</span>
+          <span class="badge-tag"><i class="fas fa-cloud"></i> SaaS & Software Vendors</span>
+          <span class="badge-tag"><i class="fas fa-lock"></i> Cybersecurity & Compliance</span>
+          <span class="badge-tag"><i class="fas fa-network-wired"></i> Cloud Migration & Infrastructure</span>
+        </div>
+        <p style="margin-top: 28px; color: #2b4b6f;">Tailored campaigns that engage CTOs, IT managers, developers — ensuring your message reaches the right audience with impact.</p>
+      </div>
+    </div>
+  </section>
 
-<div class="service-box">
-<i class="fas fa-laptop-code"></i>
-<h3>Web Development</h3>
-<p>High converting modern websites for business growth.</p>
-</div>
+  <!-- Marketing Services full section -->
+  <section id="marketing">
+    <div class="container">
+      <h2 class="section-title">Comprehensive Digital Marketing for IT Companies</h2>
+      <p class="section-sub">SEO, PPC, content & authority — engineered for technology buyers across Melbourne, Sydney & beyond.</p>
+      <div class="card-grid">
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-search feature-icon"></i><h3>SEO Optimised for IT Audiences</h3><p>Improve search presence for high-intent IT keywords, reaching decision-makers across Australia.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-dollar-sign feature-icon"></i><h3>PPC Campaigns with High ROI</h3><p>Smart bidding, hyper-targeted campaigns for CTOs, IT managers on Google, LinkedIn & industry channels.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fab fa-linkedin feature-icon"></i><h3>Social Media & Thought Leadership</h3><p>LinkedIn campaigns, community content & whitepapers positioning your brand as Australian tech leader.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-chart-simple feature-icon"></i><h3>Targeted SEO Strategy</h3><p>Technical SEO for IT websites, SaaS platforms & MSPs, maximising visibility on service pages.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-bullhorn feature-icon"></i><h3>Performance-Driven PPC</h3><p>Continuous real-time optimisation, ensuring every dollar works harder for your business.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-newspaper feature-icon"></i><h3>Authority Building</h3><p>Whitepapers on cybersecurity, cloud & IT services, consistent thought-leadership messaging.</p></div>
+      </div>
+    </div>
+  </section>
 
-<div class="service-box">
-<i class="fas fa-bullhorn"></i>
-<h3>Digital Marketing</h3>
-<p>SEO, PPC, Social Media & Lead Generation.</p>
-</div>
+  <!-- Web Development Section with stats -->
+  <section id="webdev" style="background: #f6fafd;">
+    <div class="container">
+      <h2 class="section-title">IT-Focused Web Design & Development</h2>
+      <p class="section-sub">Digital shopfront for Australian technology businesses — performance, security & scalability.</p>
+      <div style="display: flex; flex-wrap:wrap; gap: 24px; justify-content: space-between;">
+        <div style="flex:1; min-width: 220px;"><i class="fas fa-tachometer-alt" style="font-size: 2rem; color:#0052D4;"></i><h3>Performance</h3><p>Fully responsive, optimised speed & reliability across all devices.</p></div>
+        <div style="flex:1; min-width: 220px;"><i class="fas fa-shield-virus" style="font-size: 2rem; color:#0052D4;"></i><h3>Security</h3><p>Secure architectures aligned with compliance & best practices.</p></div>
+        <div style="flex:1; min-width: 220px;"><i class="fas fa-chart-line" style="font-size: 2rem; color:#0052D4;"></i><h3>Scalability</h3><p>Frameworks that support business growth & future integrations.</p></div>
+        <div style="flex:1; min-width: 220px;"><i class="fas fa-users" style="font-size: 2rem; color:#0052D4;"></i><h3>Clear UX for IT Services</h3><p>Logical journeys, helpdesk/network/cloud offerings made easy to understand.</p></div>
+      </div>
+      <div class="metrics-flex" style="margin-top: 48px;">
+        <div class="metric-item"><span class="counter-num" id="speedCounter" data-target="50">0</span>%<h4>Faster Load Speeds</h4><p>Average improvement</p></div>
+        <div class="metric-item"><span class="counter-num" id="satCounter" data-target="100">0</span>%<h4>Client Satisfaction</h4><p>Positive feedback</p></div>
+      </div>
+    </div>
+  </section>
 
-<div class="service-box">
-<i class="fas fa-server"></i>
-<h3>IT Support</h3>
-<p>Helpdesk, Network, Security & Cloud Services.</p>
-</div>
+  <!-- IT Services full (Helpdesk, Network, Incident etc) -->
+  <section id="it-services">
+    <div class="container">
+      <h2 class="section-title">End-to-End IT Services for Modern Business</h2>
+      <p class="section-sub">Support, secure & optimise — helpdesk, network, incident management with certified professionals.</p>
+      <div class="card-grid">
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-headset feature-icon"></i><h3>IT Helpdesk Support</h3><p>L1/L2/L3 support, ticket resolution, remote assistance — minimise downtime improve productivity.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-wifi feature-icon"></i><h3>Network Support</h3><p>LAN/WAN/Wi-Fi, VPN configuration, network monitoring & optimisation for stable secure environments.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-bug feature-icon"></i><h3>Incident Management</h3><p>Root cause analysis, escalation management, SLA-driven resolution to restore services quickly.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-shield-hog feature-icon"></i><h3>IT Security Support</h3><p>Endpoint protection, patch management, access control & compliance support.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-database feature-icon"></i><h3>Infrastructure Support</h3><p>Servers, storage, cloud (Microsoft 365, Azure, AWS), backup & disaster recovery.</p></div></div>
+      </div>
+    </div>
+  </section>
 
-<div class="service-box">
-<i class="fas fa-chart-line"></i>
-<h3>Analytics</h3>
-<p>Transparent reporting & performance dashboards.</p>
-</div>
+  <!-- Lead Generation + Analytics fusion -->
+  <section style="background: linear-gradient(120deg, #ffffff, #f2f6fe);">
+    <div class="container">
+      <div class="card-grid">
+        <div class="glass-card"><i class="fas fa-handshake feature-icon"></i><h3>Buyer-Centric Engagement</h3><p>Guided demos, proof-of-concept, structured onboarding journeys that build confidence.</p></div>
+        <div class="glass-card"><i class="fas fa-users feature-icon"></i><h3>Community-Driven Demand</h3><p>Engagement in IT forums, Slack/Teams groups, relationship-based outreach beyond tracking.</p></div>
+        <div class="glass-card"><i class="fas fa-lightbulb feature-icon"></i><h3>Thought Leadership</h3><p>Positioning authority in cybersecurity, compliance, risk management — driving qualified leads.</p></div>
+      </div>
+      <div class="metrics-flex" style="margin-top: 40px;">
+        <div class="metric-item"><i class="fas fa-chart-line" style="font-size: 2rem; color:#0052D4;"></i><h3>SLA Compliance</h3><p><span class="counter-num" id="slaCounter" data-target="99">0</span>%</p><small>Industry benchmark</small></div>
+        <div class="metric-item"><i class="fas fa-phone-alt"></i><h3>First-Call Resolution</h3><p><span class="counter-num" id="fcrCounter" data-target="87">0</span>%</p><small>Efficiency & trust</small></div>
+        <div class="metric-item"><i class="fas fa-globe"></i><h3>Network Uptime</h3><p><span class="counter-num" id="uptimeCounter" data-target="99.99">0</span>%</p><small>Reliability guaranteed</small></div>
+      </div>
+      <p style="text-align: center; margin-top: 30px;">Transparent reporting, continuous optimisation, aligned with Australian business objectives.</p>
+    </div>
+  </section>
 
-</div>
-</section>
+  <!-- Clients & Case Study -->
+  <section id="clients">
+    <div class="container">
+      <h2 class="section-title">Trusted by Australian Technology & IT Service Providers</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 36px; justify-content: space-between; margin-bottom: 48px;">
+        <div><i class="fas fa-chalkboard"></i> <strong>Managed Service Providers</strong><br>Scalable IT infrastructure</div>
+        <div><i class="fas fa-code"></i> <strong>SaaS & Tech Products</strong><br>Reliable technical operations</div>
+        <div><i class="fas fa-fingerprint"></i> <strong>Cybersecurity Firms</strong><br>Compliant IT support</div>
+        <div><i class="fas fa-cloud-upload-alt"></i> <strong>Cloud & Infrastructure</strong><br>Migration support</div>
+      </div>
+      <div class="glass-card" style="padding: 36px; margin-top: 20px;">
+        <h3><i class="fas fa-shield-alt"></i> Case Study: Cybersecurity Services Provider Implementation</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px;">
+          <div style="flex:1"><strong>Challenge</strong><br>High volume of user incidents, inconsistent response times, growing demand for secure remote access.</div>
+          <div style="flex:1"><strong>Our Solution</strong><br>Structured IT Helpdesk & Incident Management with SLA-driven workflows, endpoint security & proactive monitoring.</div>
+        </div>
+        <p style="margin-top: 20px;"><i class="fas fa-chart-simple"></i> Result: 40% faster resolution, enhanced client satisfaction & strengthened security posture.</p>
+      </div>
+    </div>
+  </section>
 
-<section class="pricing" id="pricing">
-<h2>Pricing Plans</h2>
+  <!-- About Us + Office details  -->
+  <section style="background: #F9FCFE;">
+    <div class="container">
+      <div class="card-grid">
+        <div class="glass-card"><i class="fas fa-globe-asia feature-icon"></i><h3>Global Reach</h3><p>International presence with local Australian expertise & regional business understanding.</p></div>
+        <div class="glass-card"><i class="fas fa-user-check feature-icon"></i><h3>Certified Professionals</h3><p>Industry-certified IT professionals delivering enterprise-grade solutions & proven methodologies.</p></div>
+        <div class="glass-card"><i class="fas fa-hand-holding-heart feature-icon"></i><h3>Customer-Centric</h3><p>Long-term partnerships built on trust, transparency & commitment to your success.</p></div>
+      </div>
+      <div class="glass-card" style="margin-top: 40px; text-align: center; padding: 32px;">
+        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
+        <h3>Australian Office</h3>
+        <p>C/o Deepak Paraye, 1/7 Dunstan Street, Clayton VIC 3168, Melbourne, Australia</p>
+        <p><i class="fas fa-envelope"></i> hello@digitalitmove.com.au | <i class="fas fa-phone-alt"></i> +61 3 9001 6200</p>
+      </div>
+    </div>
+  </section>
 
-<div class="pricing-grid">
-
-<div class="price-card">
-<h3>Starter</h3>
-<h1>$600</h1>
-<p>/month</p>
-<ul>
-<li>Helpdesk Support</li>
-<li>Email Support</li>
-<li>Basic IT Assistance</li>
-</ul>
-<button>Choose Plan</button>
-</div>
-
-<div class="price-card featured">
-<h3>Business</h3>
-<h1>$1500</h1>
-<p>/month</p>
-<ul>
-<li>Level 1 & 2 Support</li>
-<li>VPN + Microsoft 365</li>
-<li>Priority Response</li>
-</ul>
-<button>Choose Plan</button>
-</div>
-
-<div class="price-card">
-<h3>Enterprise</h3>
-<h1>$4000+</h1>
-<p>/month</p>
-<ul>
-<li>Dedicated Resources</li>
-<li>Cloud + Security</li>
-<li>24/7 Support</li>
-</ul>
-<button>Choose Plan</button>
-</div>
-
-</div>
-</section>
-
-<section class="about" id="about">
-<h2>About Us</h2>
-<p>
-We are a globally operating company focused on IT excellence, digital growth,
-and long term business partnerships. Trusted by Australian businesses.
-</p>
-</section>
-
-<section class="contact" id="contact">
-<h2>Contact Us</h2>
-<form>
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Your Email">
-<textarea placeholder="Your Message"></textarea>
-<button type="submit">Send Message</button>
-</form>
-</section>
+  <!-- Contact & Interactive Form + extra modern -->
+  <section id="contact">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; gap: 48px;">
+        <div style="flex:1">
+          <h2 class="section-title">Let’s Transform Your IT Business</h2>
+          <p>Get a tailored strategy — whether it's lead generation, managed IT services or web presence, we help you dominate Australian tech landscape.</p>
+          <div class="metrics-flex" style="margin-top: 32px; background: white;">
+            <div><i class="fas fa-chart-line"></i> 80+ campaigns delivered</div>
+            <div><i class="fas fa-star"></i> 98% client retention</div>
+          </div>
+        </div>
+        <div style="flex:1">
+          <form id="contactForm" class="contact-form">
+            <input type="text" placeholder="Full name" id="nameField" required>
+            <input type="email" placeholder="Business email" id="emailField" required>
+            <textarea rows="3" placeholder="Tell us about your IT needs..." id="msgField"></textarea>
+            <button type="submit" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send enquiry</button>
+            <p id="formFeedback" style="margin-top: 12px; font-size:0.9rem;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-<p>Digital IT Move © 2026 | Melbourne Australia</p>
+  <div class="container" style="text-align: center;">
+    <div class="logo" style="color:white; background: none; -webkit-background-clip: unset; color:#fff;">Digital IT Move</div>
+    <p style="margin: 24px 0;">© 2025 Digital IT Move – Bridging IT expertise & strategic growth across Australia & globally.</p>
+    <div style="display: flex; justify-content: center; gap: 28px; font-size: 1.4rem;">
+      <i class="fab fa-linkedin"></i> <i class="fab fa-twitter"></i> <i class="fab fa-facebook"></i>
+    </div>
+  </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+  }
+
+  // Smooth scroll for anchor
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if(target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+      }
+    });
+  });
+
+  // Intersection Observer for counters & fade-up
+  const fadeElements = document.querySelectorAll('.fade-up, .glass-card, .card-grid > div, .metrics-flex');
+  fadeElements.forEach(el => el.classList.add('fade-up'));
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // trigger counters if inside visible area
+        if(entry.target.classList.contains('metrics-flex') || entry.target.querySelector('.counter-num')) {
+          startCounters();
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  document.querySelectorAll('.glass-card, .metrics-flex, .card-grid > div, section > .container > .card-grid, .hero, .stat-card').forEach(el => observer.observe(el));
+
+  // Counter animation for all counters
+  function startCounters() {
+    const counters = document.querySelectorAll('.counter-num');
+    counters.forEach(counter => {
+      if(counter.getAttribute('data-counted') === 'true') return;
+      const target = parseFloat(counter.getAttribute('data-target'));
+      if(isNaN(target)) return;
+      let current = 0;
+      const increment = target / 45;
+      const updateCounter = () => {
+        current += increment;
+        if(current < target) {
+          counter.innerText = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCounter();
+      counter.setAttribute('data-counted', 'true');
+    });
+  }
+  
+  // initial visible counters for speed and sat on load if visible
+  window.addEventListener('load', () => {
+    // manual check of counters in viewport
+    const speedC = document.getElementById('speedCounter');
+    const satC = document.getElementById('satCounter');
+    const slaC = document.getElementById('slaCounter');
+    const fcrC = document.getElementById('fcrCounter');
+    const uptimeC = document.getElementById('uptimeCounter');
+    
+    const observerCounters = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) startCounters();
+      });
+    }, { threshold: 0.3 });
+    [speedC, satC, slaC, fcrC, uptimeC].forEach(el => { if(el) observerCounters.observe(el); });
+    startCounters(); // initial in case visible
+  });
+
+  // Contact form simulation (interactive)
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('nameField')?.value.trim();
+      const email = document.getElementById('emailField')?.value.trim();
+      const feedback = document.getElementById('formFeedback');
+      if(!name || !email) {
+        feedback.innerHTML = '<span style="color:#d9534f;">Please fill name and email.</span>';
+        return;
+      }
+      feedback.innerHTML = '<span style="color:#2b7a3e;"><i class="fas fa-check-circle"></i> Thanks! Our IT strategist will reach out within 24h.</span>';
+      contactForm.reset();
+      setTimeout(() => feedback.innerHTML = '', 4000);
+    });
+  }
+
+  // Add extra badge style for trusted leaders section
+  const styleTag = document.createElement('style');
+  styleTag.textContent = `.badge-tag { background: white; padding: 8px 20px; border-radius: 60px; font-weight: 500; box-shadow: 0 2px 6px rgba(0,0,0,0.03); border: 1px solid #caddf0; display: inline-flex; align-items: center; gap: 8px; }`;
+  document.head.appendChild(styleTag);
+  
+  // manually set initial fade for elements
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight-100) el.classList.add('visible');
+    });
+  }, 200);
+</script>
 </body>
 </html>
