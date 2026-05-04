@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Digital Marketing & Analytics | Digital IT Move Australia</title>
+  <meta name="description" content="Data-driven digital marketing including SEO, paid advertising, marketing analytics, and conversion optimization for Australian technology companies.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f9ff;
+      color: #1A2C3E;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* animated gradient background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at 10% 20%, rgba(0, 82, 212, 0.03) 0%, rgba(0, 166, 255, 0.02) 100%);
+    }
+
+    .animated-bg::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: repeating-linear-gradient(45deg, rgba(0,82,212,0.02) 0px, rgba(0,82,212,0.02) 2px, transparent 2px, transparent 8px);
+      animation: shiftBg 60s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shiftBg {
+      0% { transform: translate(0,0) rotate(0deg); }
+      100% { transform: translate(20px,20px) rotate(2deg); }
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* enhanced glass card with shimmer */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      box-shadow: 0 25px 45px -18px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 112, 243, 0.08);
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 35px 55px -20px rgba(0, 82, 212, 0.25);
+      border-color: rgba(0, 112, 243, 0.2);
+    }
+
+    .glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.7s;
+      pointer-events: none;
+    }
+
+    .glass-card:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(105deg, #0052D4 0%, #4361EE 100%);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,82,212,0.2);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,82,212,0.3);
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 110;
+      border-bottom: 1px solid rgba(0, 82, 212, 0.1);
+      transition: all 0.3s;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0052D4, #1E88E5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      transition: transform 0.2s;
+    }
+    .logo-text:hover { transform: scale(1.02); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2f3f;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0052D4, #00A6FF);
+      transition: width 0.25s;
+    }
+
+    .nav-links a:hover:after, .nav-links a.active:after {
+      width: 100%;
+    }
+
+    .nav-links a.active { color: #0052D4; font-weight: 600; }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-weight: 500;
+      color: #1e2f3f;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 0;
+      transition: 0.2s;
+    }
+    .dropdown-toggle:hover { color: #0052D4; }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      box-shadow: 0 25px 40px rgba(0, 0, 0, 0.12);
+      padding: 12px 8px;
+      min-width: 270px;
+      z-index: 120;
+      border: 1px solid rgba(0,82,212,0.15);
+      transform-origin: top;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+      animation: fadeSlide 0.25s ease forwards;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dropdown-menu a {
+      padding: 12px 20px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #1A2C3E;
+      transition: all 0.2s;
+    }
+    .dropdown-menu a:hover {
+      background: linear-gradient(95deg, #eef4ff, #e0eaff);
+      color: #0052D4;
+      transform: translateX(5px);
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 1.7rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #0052D4;
+    }
+
+    /* Hero with wave & animation */
+    .page-hero {
+      background: linear-gradient(125deg, #001f3f 0%, #0052D4 45%, #00A6FF 100%);
+      color: white;
+      padding: 80px 0 90px;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    }
+    .page-hero::before {
+      content: "📈📊🚀";
+      position: absolute;
+      font-size: 140px;
+      opacity: 0.05;
+      bottom: -20px;
+      right: 20px;
+      pointer-events: none;
+      transform: rotate(-8deg);
+    }
+
+    .hero-content {
+      animation: riseFade 1s ease-out;
+    }
+
+    @keyframes riseFade {
+      0% { opacity: 0; transform: translateY(35px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-hero h1 {
+      font-size: 3.3rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* fancy box grid */
+    .service-detail {
+      margin: 60px 0;
+      padding: 0;
+      background: transparent;
+      backdrop-filter: none;
+      box-shadow: none;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-block {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 44px;
+      padding: 2rem 2rem 2rem 2rem;
+      transition: all 0.4s ease;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0,82,212,0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .info-block:hover {
+      transform: scale(1.01);
+      box-shadow: 0 30px 45px -15px rgba(0, 82, 212, 0.2);
+      border-color: rgba(0, 82, 212, 0.3);
+    }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 1.3rem;
+      flex-wrap: wrap;
+    }
+
+    .block-icon {
+      font-size: 2.6rem;
+      background: linear-gradient(145deg, #eef4ff, #ffffff);
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 35px;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.02), 0 0 0 1px rgba(0,82,212,0.1);
+      color: #0052D4;
+      transition: 0.3s;
+    }
+
+    .info-block:hover .block-icon {
+      transform: rotateY(5deg) scale(1.05);
+      background: white;
+    }
+
+    .block-header h4 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1A2C3E, #0052D4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 0;
+    }
+
+    .info-block p {
+      color: #2c475e;
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+
+    .compliance-badge {
+      margin-top: 2rem;
+      background: linear-gradient(115deg, #eef6ff, #f0f9ff);
+      border-radius: 70px;
+      padding: 1.2rem 2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-left: 7px solid #0052D4;
+      box-shadow: 0 10px 18px -10px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+
+    .compliance-badge i {
+      font-size: 2rem;
+      color: #0052D4;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(145deg, #25D366, #20b859);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      z-index: 99;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(37,211,102,0.3);
+      transition: all 0.3s;
+      animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      70% { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.12) rotate(5deg);
+      background: #20b859;
+    }
+
+    footer {
+      background: #07131c;
+      color: #b9d0f0;
+      padding: 48px 0 28px;
+      text-align: center;
+      margin-top: 3rem;
+      position: relative;
+      backdrop-filter: blur(2px);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* new image elements: decorative marketing icons + illustration */
+    .marketing-illustration {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .illus-card {
+      background: rgba(255,255,240,0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 600;
+      color: #0052D4;
+      border: 1px solid #ffffffaa;
+      font-size: 0.9rem;
+    }
+    .illus-card i {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(255,255,255,0.98);
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        gap: 24px;
+        border-radius: 0 0 32px 32px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 25px 35px rgba(0,0,0,0.05);
+      }
+      .nav-links.active { display: flex; }
+      .dropdown { width: 100%; }
+      .dropdown-menu { 
+        position: static;
+        box-shadow: none;
+        padding: 8px 0 8px 24px;
+        background: transparent;
+        border: none;
+        width: 100%;
+        transform: none;
+      }
+      .menu-btn { display: block; }
+      .page-hero h1 { font-size: 2.2rem; }
+      .block-header h4 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="animated-bg"></div>
+
+<a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%E2%80%99m%20interested%20in%20digital%20marketing" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-text">Digital IT Move</a>
+    <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <div class="dropdown" id="servicesDropdown">
+        <button class="dropdown-toggle" id="dropdownToggle">Services <i class="fas fa-chevron-down" style="font-size: 0.7rem; transition: transform 0.2s;"></i></button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="cybersecurity.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="network-services.html"><i class="fas fa-network-wired"></i> Computer Network Services</a>
+          <a href="data-analytics.html"><i class="fas fa-database"></i> Data & Analytics</a>
+          <a href="cloud-solutions.html"><i class="fas fa-cloud"></i> Cloud Solutions</a>
+          <a href="digital-marketing.html" class="active"><i class="fas fa-chart-line"></i> Digital Marketing</a>
+          <a href="automation.html"><i class="fas fa-robot"></i> Automation</a>
+          <a href="training.html"><i class="fas fa-chalkboard-teacher"></i> Training</a>
+        </div>
+      </div>
+      <a href="index.html#clients">Clients</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container hero-content">
+    <h1>Digital Marketing & Analytics</h1>
+    <p style="font-size: 1.3rem; max-width: 700px;">Data-driven marketing strategies that deliver measurable ROI for technology and B2B businesses</p>
+    <div class="marketing-illustration" style="margin-top: 32px;">
+      <span class="illus-card"><i class="fas fa-chart-simple"></i> +340% Organic Traffic</span>
+      <span class="illus-card"><i class="fas fa-dollar-sign"></i> -45% CAC</span>
+      <span class="illus-card"><i class="fas fa-bullseye"></i> Precision Targeting</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="service-detail fade-up">
+    <!-- intro block fancy -->
+    <div class="info-block" style="margin-bottom: 2rem; background: linear-gradient(115deg, #ffffff, #f6fbff);">
+      <div class="block-header">
+        <div class="block-icon"><i class="fas fa-chart-line"></i></div>
+        <h4>Performance Marketing for Tech Leaders</h4>
+      </div>
+      <p>In today's digital landscape, marketing is a science—not just art. Digital IT Move helps B2B technology companies, cybersecurity vendors, and professional services firms generate qualified leads, increase brand visibility, and demonstrate marketing ROI through data-driven strategies. We combine technical marketing expertise with deep analytics to ensure every dollar spent drives measurable business outcomes.</p>
+    </div>
+    
+    <div class="features-grid">
+      <!-- box 1: SEO & Content -->
+      <div class="info-block">
+        <div class="block-header">
+          <div class="block-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <h4>Technical SEO & Content Strategy</h4>
+        </div>
+        <p>We help you get found by the right buyers at the right time. Our technical SEO services include comprehensive site audits (crawl ability, indexation, site architecture, page speed, Core Web Vitals), keyword research targeting commercial intent queries, on-page optimization (title tags, meta descriptions, header structure, schema markup), content gap analysis, and backlink acquisition strategies. For cybersecurity and IT companies, we develop content clusters covering buyer journey stages—from awareness (educational content) to consideration (solution comparisons) to decision (product demos, case studies).</p>
+      </div>
+
+      <!-- box 2: Paid Ads -->
+      <div class="info-block">
+        <div class="block-header">
+          <div class="block-icon"><i class="fas fa-ad"></i></div>
+          <h4>Paid Advertising (Google & LinkedIn)</h4>
+        </div>
+        <p>When you need leads now, paid advertising delivers measurable results. We manage Google Ads (Search, Display, YouTube, Discovery) and LinkedIn Ads campaigns targeting B2B decision-makers. Our approach includes audience research, ad copy creation, A/B testing, bid management, negative keyword strategies, and audience retargeting. For cybersecurity and IT services, we target specific job titles (CISO, IT Director) and industries (financial services, healthcare, government).</p>
+      </div>
+
+      <!-- box 3: Analytics & Attribution -->
+      <div class="info-block">
+        <div class="block-header">
+          <div class="block-icon"><i class="fas fa-chart-pie"></i></div>
+          <h4>Marketing Analytics & Attribution</h4>
+        </div>
+        <p>Stop guessing which campaigns work. We implement comprehensive tracking infrastructure including Google Analytics 4 (GA4) configuration, Google Tag Manager, server-side tracking for data privacy, UTM parameter strategies, and marketing attribution modeling (first-click, last-click, linear, time-decay, position-based). We connect marketing data to your CRM to measure pipeline generation and closed-won revenue by channel, campaign, and keyword.</p>
+      </div>
+      
+      <!-- box 4: Content & Email -->
+      <div class="info-block">
+        <div class="block-header">
+          <div class="block-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <h4>Content & Email Marketing</h4>
+        </div>
+        <p>Build trust and nurture relationships through strategic content. We develop content strategies aligned with buyer personas and journey stages. Content types include blog posts, whitepapers, case studies, webinars, podcasts, and video content. Our email marketing programs include newsletter campaigns, lead nurturing sequences, abandoned cart recovery, re-engagement campaigns, and event promotion using marketing automation platforms like HubSpot or Marketo.</p>
+      </div>
+      
+      <!-- box 5: CRO -->
+      <div class="info-block">
+        <div class="block-header">
+          <div class="block-icon"><i class="fas fa-chart-line"></i></div>
+          <h4>Conversion Rate Optimization (CRO)</h4>
+        </div>
+        <p>More traffic doesn't matter if visitors don't convert. We analyze user behavior using heatmaps, session recordings, and analytics to identify friction points. Our CRO process includes hypothesis generation, A/B testing (using Google Optimize, VWO, or Optimizely), multivariate testing, and personalization. Our typical CRO engagement increases conversion rates by 20-40%, significantly reducing customer acquisition costs.</p>
+      </div>
+    </div>
+    
+    <!-- result badge -->
+    <div class="compliance-badge fade-up" style="margin-top: 2.5rem;">
+      <i class="fas fa-chart-line fa-fw"></i> 
+      <strong>Real Results:</strong> We helped a cybersecurity startup increase organic traffic by 340% in 12 months and reduce customer acquisition cost by 45% through paid ad optimization.
+      <i class="fas fa-rocket" style="margin-left: auto; opacity: 0.8;"></i>
+    </div>
+
+    <!-- decorative digital illustration: generated relatable images (SVG style font awesome composition) -->
+    <div class="marketing-illustration" style="margin-top: 40px; justify-content: center; gap: 24px;">
+      <div class="illus-card" style="background: rgba(0,82,212,0.05);"><i class="fas fa-chart-simple"></i> GA4 Integration</div>
+      <div class="illus-card" style="background: rgba(0,82,212,0.05);"><i class="fab fa-google"></i> Google Partner</div>
+      <div class="illus-card" style="background: rgba(0,82,212,0.05);"><i class="fab fa-linkedin"></i> B2B Targeting</div>
+      <div class="illus-card" style="background: rgba(0,82,212,0.05);"><i class="fas fa-robot"></i> AI Automation</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Digital IT Move – Cybersecurity, Data, Cloud & Growth Australia</p>
+    <div style="margin-top: 16px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+      <span><i class="fab fa-whatsapp"></i> +61 410 237 261</span>
+      <span><i class="fas fa-envelope"></i> hello@digitalitmove.com.au</span>
+      <span><i class="fab fa-linkedin"></i> Digital IT Move</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if(menuBtn) menuBtn.onclick = () => navLinks.classList.toggle('active');
+  
+  const dropdownToggle = document.getElementById('dropdownToggle');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  let isOpen = false;
+  dropdownToggle.onclick = (e) => {
+    e.preventDefault();
+    isOpen = !isOpen;
+    dropdownMenu.classList.toggle('show', isOpen);
+    const chevron = dropdownToggle.querySelector('.fa-chevron-down');
+    if(chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  };
+  document.addEventListener('click', (e) => {
+    if(!document.getElementById('servicesDropdown').contains(e.target)) {
+      dropdownMenu.classList.remove('show');
+      isOpen = false;
+      const chevron = dropdownToggle.querySelector('.fa-chevron-down');
+      if(chevron) chevron.style.transform = 'rotate(0deg)';
+    }
+  });
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  
+  // manual trigger if elements already visible
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 80) el.classList.add('visible');
+    });
+  });
+</script>
+</body>
+</html>
