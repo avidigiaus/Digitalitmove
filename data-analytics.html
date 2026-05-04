@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data & Analytics Services | Digital IT Move Australia</title>
+  <meta name="description" content="Data engineering, business intelligence, Power BI dashboards, and advanced analytics solutions for Australian businesses.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f6fafd 0%, #f0f5fa 100%);
+      color: #1A2C3E;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #0052D4, #3b82f6);
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* enhanced glass card with animation and depth */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+      border: 1px solid rgba(0, 112, 243, 0.12);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 35px 55px -18px rgba(0, 82, 212, 0.25);
+      border-color: rgba(0, 112, 243, 0.3);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    /* animated gradient border effect for cards */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0052D4, #00A6FF, #0052D4);
+      background-size: 200% 100%;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .glass-card:hover::before {
+      opacity: 1;
+      animation: shimmer 1.8s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    .btn-primary {
+      background: linear-gradient(105deg, #0052D4 0%, #4361EE 100%);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,82,212,0.2);
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,82,212,0.35);
+      background: linear-gradient(105deg, #0043b3, #3355dd);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #0052D4;
+      color: #0052D4;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover {
+      background: #ffffffcc;
+      transform: translateY(-2px);
+      border-color: #00A6FF;
+      box-shadow: 0 6px 14px rgba(0,82,212,0.15);
+    }
+
+    /* Navigation + sticky blur */
+    nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 110;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0052D4, #00A6FF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .logo-text:hover {
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2f3f;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #0052D4;
+      transform: translateY(-1px);
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-weight: 500;
+      color: #1e2f3f;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 0;
+      transition: 0.2s;
+    }
+    .dropdown-toggle:hover {
+      color: #0052D4;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.12);
+      padding: 12px 8px;
+      min-width: 280px;
+      z-index: 120;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: all 0.2s;
+    }
+    .dropdown-menu.show {
+      display: block;
+      animation: fadeSlideDown 0.2s ease;
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .dropdown-menu a {
+      padding: 12px 16px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #1A2C3E;
+      transition: all 0.2s;
+    }
+    .dropdown-menu a:hover {
+      background: #eef4ff;
+      color: #0052D4;
+      transform: translateX(5px);
+    }
+
+    /* hero section animation & background */
+    .page-hero {
+      background: linear-gradient(125deg, #002766 0%, #004e92 40%, #0088cc 100%);
+      color: white;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: "📊 📈 🔍";
+      font-size: 180px;
+      position: absolute;
+      bottom: -40px;
+      right: 20px;
+      opacity: 0.07;
+      white-space: pre;
+      pointer-events: none;
+      font-family: monospace;
+      animation: drift 35s infinite linear;
+    }
+    @keyframes drift {
+      0% { transform: translateX(0px) translateY(0px);}
+      100% { transform: translateX(-40px) translateY(-20px);}
+    }
+    .page-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeUp 0.8s ease;
+    }
+    .page-hero p {
+      font-size: 1.2rem;
+      opacity: 0.92;
+      animation: fadeUp 0.8s 0.1s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* fancy info boxes - each sub-section turned into elegant card */
+    .service-detail {
+      padding: 48px;
+      margin: 50px 0 60px;
+      transition: all 0.3s;
+    }
+    .service-detail h3 {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+      color: #0052D4;
+      background: linear-gradient(135deg, #0052D4, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin: 45px 0 25px;
+    }
+    .feature-item {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 28px 24px;
+      transition: all 0.35s;
+      border: 1px solid rgba(0,112,243,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    }
+    .feature-item:hover {
+      transform: translateY(-8px);
+      background: white;
+      border-color: rgba(0,112,243,0.3);
+      box-shadow: 0 22px 40px -14px rgba(0,82,212,0.2);
+    }
+    .feature-icon {
+      font-size: 2.6rem;
+      background: linear-gradient(145deg, #EFF6FF, #ffffff);
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 15px -6px rgba(0,0,0,0.05);
+    }
+    .feature-item h4 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .feature-item p {
+      color: #2c3f54;
+      line-height: 1.5;
+    }
+
+    .compliance-badge {
+      background: linear-gradient(115deg, #eef2fc, #ffffff);
+      border-left: 6px solid #0052D4;
+      padding: 28px 32px;
+      border-radius: 36px;
+      margin: 40px 0 10px;
+      transition: all 0.3s;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.05);
+    }
+    .compliance-badge i {
+      color: #0052D4;
+      margin-right: 8px;
+      font-size: 1.6rem;
+      vertical-align: middle;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      z-index: 99;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(37,211,102,0.3);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.12) rotate(5deg);
+      background: #20b859;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: #0A1927;
+      color: #cbd5e1;
+      padding: 56px 0 28px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    footer i {
+      margin-right: 6px;
+    }
+
+    /* animated fade-up on scroll */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* menu and responsive */
+    .menu-btn {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #0052D4;
+    }
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(20px);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        gap: 24px;
+        border-radius: 0 0 36px 36px;
+        box-shadow: 0 30px 40px rgba(0,0,0,0.1);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .dropdown {
+        width: 100%;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        padding: 8px 0 8px 20px;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        width: 100%;
+      }
+      .menu-btn {
+        display: block;
+      }
+      .service-detail {
+        padding: 28px;
+      }
+      .feature-grid {
+        gap: 22px;
+      }
+      .page-hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%E2%80%99m%20interested%20in%20data%20analytics" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo-text">Digital IT Move</a>
+      <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <div class="dropdown" id="servicesDropdown">
+          <button class="dropdown-toggle" id="dropdownToggle">Services <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="cybersecurity.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+            <a href="network-services.html"><i class="fas fa-network-wired"></i> Computer Network Services</a>
+            <a href="data-analytics.html" class="active"><i class="fas fa-database"></i> Data & Analytics</a>
+            <a href="cloud-solutions.html"><i class="fas fa-cloud"></i> Cloud Solutions</a>
+            <a href="digital-marketing.html"><i class="fas fa-chart-line"></i> Digital Marketing</a>
+            <a href="automation.html"><i class="fas fa-robot"></i> Automation</a>
+            <a href="training.html"><i class="fas fa-chalkboard-teacher"></i> Training</a>
+          </div>
+        </div>
+        <a href="index.html#clients">Clients</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Data Engineering & Analytics</h1>
+      <p>Transform raw data into actionable intelligence with modern data platforms and advanced analytics</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="glass-card service-detail fade-up">
+      <i class="fas fa-chart-line" style="font-size: 3.2rem; color: #0052D4; margin-bottom: 20px; display: inline-block;"></i>
+      <h3>End-to-End Data Solutions</h3>
+      <p>Data is your most valuable asset—but only if you can harness it effectively. At Digital IT Move, we build scalable data platforms that turn raw, disparate data sources into trusted, actionable insights. We specialize in modern data architectures on Microsoft Azure, helping Australian businesses break down data silos, automate data pipelines, and democratize analytics across their organizations.</p>
+
+      <!-- fancy boxes replacing plain h4 + p to make each section shine -->
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+          <h4>Modern Data Platforms & Lakehouses</h4>
+          <p>We design and implement modern data architectures combining data lakes, data warehouses, and lakehouse patterns using Azure Data Lake Storage, Azure Synapse Analytics, and Databricks. Our platforms handle structured, semi-structured, and unstructured data at any scale—from gigabytes to petabytes. We implement medallion architecture (bronze/silver/gold layers) ensuring data quality, lineage, and governance throughout the pipeline. Whether you need batch processing, real-time streaming, or hybrid approaches, we build solutions that deliver reliable, fresh data for your analytics needs.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-code-branch"></i></div>
+          <h4>ETL/ELT Pipeline Development</h4>
+          <p>Manual data processing is error-prone and unsustainable. We automate your data movement with robust ETL/ELT pipelines using Azure Data Factory, Synapse Pipelines, Databricks workflows, and Python. We extract data from diverse sources including SQL databases, APIs, SaaS applications, IoT devices, and flat files, transform it according to business logic, and load it into optimized analytical stores. Our pipelines include data validation, error handling, monitoring, and alerting—ensuring data reliability and operational visibility.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+          <h4>Business Intelligence & Power BI</h4>
+          <p>Data without visualization is just numbers. We build stunning, interactive dashboards and reports using Microsoft Power BI that empower your team to make data-driven decisions. Our Power BI solutions include data modeling (star schemas, calculated columns, measures), DAX optimization, row-level security for data governance, and mobile-optimized reports. We train your staff to become self-sufficient with Power BI, fostering a data-driven culture. From executive KPIs to operational dashboards, we deliver insights that drive action.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-robot"></i></div>
+          <h4>Advanced Analytics & Machine Learning</h4>
+          <p>Beyond descriptive analytics (what happened), we help you predict what will happen. Our data scientists build predictive models, forecasting solutions, and machine learning pipelines using Azure Machine Learning, Databricks ML, and Python (scikit-learn, TensorFlow, PyTorch). Use cases include customer churn prediction, demand forecasting, fraud detection, anomaly detection, and recommendation engines. We operationalize models using MLOps practices—automating training, deployment, monitoring, and retraining cycles.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>Data Governance & Quality</h4>
+          <p>Trust in data requires rigorous governance. We implement data catalogs (Microsoft Purview), data lineage tracking, master data management, and data quality measurement frameworks. Our governance solutions include business glossary creation, data classification, sensitivity labeling, and access control policies. We help you comply with data regulations (Privacy Act, GDPR, APRA) through automated data discovery, classification, and policy enforcement.</p>
+        </div>
+      </div>
+
+      <div class="compliance-badge">
+        <i class="fas fa-chart-bar"></i> <strong>Real-World Impact:</strong> We helped a retail client consolidate data from 12 different systems into a centralized data platform, reducing reporting time from 3 weeks to 2 hours.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Digital IT Move – Cybersecurity, Data, Cloud & Growth Australia</p>
+      <div style="margin-top: 16px;"><i class="fab fa-whatsapp"></i> +61 410 237 261 | <i class="fas fa-envelope"></i> hello@digitalitmove.com.au</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if(menuBtn) menuBtn.onclick = () => navLinks.classList.toggle('active');
+    
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    let isOpen = false;
+    dropdownToggle.onclick = (e) => {
+      e.preventDefault();
+      isOpen = !isOpen;
+      dropdownMenu.classList.toggle('show', isOpen);
+      const chevron = dropdownToggle.querySelector('.fa-chevron-down');
+      if(chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+    };
+    document.addEventListener('click', (e) => {
+      if(!document.getElementById('servicesDropdown').contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+        isOpen = false;
+        const chevron = dropdownToggle.querySelector('.fa-chevron-down');
+        if(chevron) chevron.style.transform = 'rotate(0deg)';
+      }
+    });
+    
+    // Intersection observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -30px 0px" });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    
+    // Extra micro-animation on feature items: add stagger on visible
+    const featureItems = document.querySelectorAll('.feature-item');
+    const staggerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, idx) => {
+        if(entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${idx * 0.05}s`;
+          entry.target.classList.add('visible');
+          staggerObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    featureItems.forEach(item => {
+      item.style.opacity = "0";
+      item.style.transform = "translateY(20px)";
+      item.style.transition = "opacity 0.6s ease, transform 0.5s ease";
+      staggerObserver.observe(item);
+    });
+    const addVisibleClass = () => {
+      featureItems.forEach(item => {
+        if(item.getBoundingClientRect().top < window.innerHeight - 100) {
+          item.style.opacity = "1";
+          item.style.transform = "translateY(0)";
+        }
+      });
+    };
+    window.addEventListener('scroll', addVisibleClass);
+    addVisibleClass();
+  </script>
+</body>
+</html>
