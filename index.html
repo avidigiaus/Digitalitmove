@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
-  <title>Digital IT Move | Data, Cloud & Digital Marketing Australia</title>
-  <!-- Google Fonts + Font Awesome 6 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes">
+  <title>Digital IT Move | Cybersecurity, Cloud, Data & Marketing Australia</title>
+  <meta name="description" content="Enterprise cybersecurity, cloud solutions, data analytics, and digital marketing services for Australian businesses. NDA protection and data sovereignty guaranteed.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- FileSaver.js for saving Word file -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -19,10 +16,11 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #fbfdfe;
+      background: #fbfdfe;
       color: #1A2C3E;
-      line-height: 1.5;
+      line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     .container {
@@ -32,18 +30,18 @@
     }
 
     .glass-card {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(0px);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(2px);
       border-radius: 32px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(0, 82, 212, 0.08);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.04), 0 1px 2px rgba(0,82,212,0.02);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+      border: 1px solid rgba(0, 112, 243, 0.08);
     }
 
     .glass-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 40px -18px rgba(0,0,0,0.15);
-      border-color: rgba(0, 112, 243, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 45px -15px rgba(0,82,212,0.15), 0 0 0 1px rgba(0,112,243,0.15);
+      border-color: rgba(0, 112, 243, 0.25);
     }
 
     .btn-primary {
@@ -55,8 +53,8 @@
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0,82,212,0.25);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(0,82,212,0.25);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -64,15 +62,9 @@
     }
 
     .btn-primary:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
       background: linear-gradient(105deg, #0040b0 0%, #2b4cd4 100%);
-      box-shadow: 0 8px 20px rgba(0,82,212,0.35);
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
+      box-shadow: 0 10px 22px rgba(0,82,212,0.4);
     }
 
     .btn-outline {
@@ -82,15 +74,15 @@
       padding: 10px 24px;
       border-radius: 40px;
       font-weight: 600;
-      transition: 0.2s;
+      transition: 0.25s;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-
+    
     .btn-outline:hover {
-      background: #0052D410;
+      background: rgba(0,82,212,0.06);
       border-color: #003d9e;
     }
 
@@ -98,17 +90,17 @@
       background: linear-gradient(105deg, #25D366 0%, #128C7E 100%);
       box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
     }
+    
     .btn-whatsapp:hover {
       background: linear-gradient(105deg, #20b859 0%, #0e6d62 100%);
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
     }
 
     nav {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 110;
       border-bottom: 1px solid #eef2f6;
     }
 
@@ -121,10 +113,7 @@
       margin: 0 auto;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .logo-text {
       font-size: 1.7rem;
       font-weight: 800;
       background: linear-gradient(135deg, #0052D4, #00A6FF);
@@ -132,26 +121,12 @@
       -webkit-background-clip: text;
       color: transparent;
       letter-spacing: -0.3px;
-    }
-
-    .logo-img {
-      height: 44px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 2px 4px rgba(0,82,212,0.15));
-      transition: transform 0.2s ease;
-    }
-
-    .logo-text {
-      background: linear-gradient(135deg, #0052D4, #00A6FF);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 28px;
       align-items: center;
       flex-wrap: wrap;
     }
@@ -166,6 +141,69 @@
 
     .nav-links a:hover {
       color: #0052D4;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2f3f;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .dropdown-toggle:hover {
+      color: #0052D4;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      padding: 12px 8px;
+      min-width: 260px;
+      z-index: 120;
+      border: 1px solid #eef2f6;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      padding: 12px 16px;
+      border-radius: 16px;
+      transition: 0.2s;
+      font-weight: 500;
+      color: #1A2C3E;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f0f6ff;
+      color: #0052D4;
+      transform: translateX(4px);
     }
 
     .menu-btn {
@@ -235,76 +273,57 @@
       margin-top: 20px;
     }
 
+    .service-card {
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
     .feature-icon {
       font-size: 2.5rem;
       color: #0052D4;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       display: inline-block;
+      transition: transform 0.3s;
     }
 
-    .metrics-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      justify-content: space-between;
-      background: #ffffffdd;
-      border-radius: 40px;
-      padding: 32px 28px;
-      backdrop-filter: blur(4px);
-      border: 1px solid #eef2ff;
+    .service-card:hover .feature-icon {
+      transform: scale(1.1);
     }
 
-    .metric-item {
-      flex: 1;
-      text-align: center;
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #1A2C3E;
     }
 
-    .counter-num {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0052D4;
-    }
-
-    footer {
-      background: #0A1927;
-      color: #cbd5e1;
-      padding: 48px 0 24px;
-    }
-
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 28px;
-      border: 1px solid #cfdfed;
-      background: white;
-      font-family: inherit;
+    .service-card p {
+      color: #4a627a;
       margin-bottom: 16px;
-      transition: 0.2s;
     }
 
-    .contact-form input:focus, .contact-form textarea:focus {
-      outline: none;
-      border-color: #0052D4;
-      box-shadow: 0 0 0 3px rgba(0,82,212,0.1);
-    }
-
-    .badge-tag {
-      background: white;
-      padding: 8px 20px;
-      border-radius: 60px;
-      font-weight: 500;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-      border: 1px solid #caddf0;
+    .learn-more {
+      color: #0052D4;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .compliance-badge {
+      background: #eef2fa;
+      border-left: 4px solid #0052D4;
+      padding: 18px 24px;
+      border-radius: 20px;
+      margin: 24px 0;
     }
 
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background-color: #25D366;
+      background: #25D366;
       color: white;
       width: 60px;
       height: 60px;
@@ -313,15 +332,33 @@
       align-items: center;
       justify-content: center;
       font-size: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: 0.3s;
       z-index: 99;
       text-decoration: none;
     }
+    
     .whatsapp-float:hover {
       transform: scale(1.1);
-      background-color: #20b359;
-      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+      background: #20b359;
+    }
+
+    footer {
+      background: #0A1927;
+      color: #cbd5e1;
+      padding: 48px 0 24px;
+      text-align: center;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
+    }
+    
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 880px) {
@@ -338,286 +375,186 @@
         box-shadow: 0 20px 30px rgba(0,0,0,0.05);
         border-radius: 0 0 28px 28px;
       }
+      
       .nav-links.active {
         display: flex;
       }
+      
+      .dropdown {
+        width: 100%;
+      }
+      
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        padding: 8px 0 8px 20px;
+        margin-top: 8px;
+        background: transparent;
+        border: none;
+        width: 100%;
+      }
+      
+      .dropdown-menu a {
+        padding: 10px 14px;
+      }
+      
       .menu-btn {
         display: block;
       }
+      
       .hero-grid {
         flex-direction: column;
       }
-      .section-title {
-        font-size: 1.9rem;
-      }
-      .logo-img {
-        height: 36px;
-      }
-      .logo-text {
-        font-size: 1.3rem;
-      }
-      .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 1.6rem;
-        bottom: 20px;
-        right: 20px;
-      }
     }
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: white;
-      animation: spin 0.6s linear infinite;
-      margin-right: 8px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .feedback-success { color: #2b7a3e; background: #e9f7ef; padding: 10px 16px; border-radius: 40px; font-size: 0.9rem; display: inline-block; width: 100%; text-align: center; }
-    .feedback-error { color: #d9534f; background: #fdf7f7; padding: 10px 16px; border-radius: 40px; font-size: 0.9rem; display: inline-block; width: 100%; text-align: center; }
   </style>
 </head>
 <body>
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27m%20interested%20in%20your%20data%2C%20cloud%20and%20digital%20services.%20Can%20we%20chat%3F" 
-   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%E2%80%99m%20interested%20in%20your%20services" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
 <nav>
   <div class="nav-container">
-    <div class="logo">
-      <!--img class="logo-img" src="https://placehold.co/400x120/1A2C3E/white?text=Digital+IT+Move" alt="Digital IT Move Logo" 
-           onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 60\'%3E%3Crect width=\'200\' height=\'60\' fill=\'%230052D4\'/%3E%3Ctext x=\'20\' y=\'38\' fill=\'white\' font-size=\'22\' font-family=\'Inter,sans-serif\' font-weight=\'bold\'%3EDigital IT Move%3C/text%3E%3C/svg%3E';" 
-           style="height:48px; width:auto; object-fit:contain;"-->
-      <span class="logo-text">Digital IT Move</span>
-    </div>
+    <a href="index.html" class="logo-text" style="text-decoration: none;">Digital IT Move</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#data-engineering">Data & Analytics</a>
-      <a href="#automation">Automation</a>
-      <a href="#cloud">Cloud</a>
-      <a href="#marketing">Marketing</a>
-      <a href="#training">Training</a>
-      <a href="#clients">Clients</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      
+      <div class="dropdown" id="servicesDropdown">
+        <button class="dropdown-toggle" id="dropdownToggle">
+          Services <i class="fas fa-chevron-down" style="font-size: 0.7rem; transition: transform 0.3s;"></i>
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="cybersecurity.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+          <a href="network-services.html"><i class="fas fa-network-wired"></i> Computer Network Services</a>
+          <a href="data-analytics.html"><i class="fas fa-database"></i> Data & Analytics</a>
+          <a href="cloud-solutions.html"><i class="fas fa-cloud"></i> Cloud Solutions</a>
+          <a href="digital-marketing.html"><i class="fas fa-chart-line"></i> Digital Marketing</a>
+          <a href="automation.html"><i class="fas fa-robot"></i> Automation</a>
+          <a href="training.html"><i class="fas fa-chalkboard-teacher"></i> Training</a>
+        </div>
+      </div>
+      
+      <a href="index.html#clients">Clients</a>
+      <a href="index.html#contact">Contact</a>
     </div>
   </div>
 </nav>
 
 <main>
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="home" class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="hero-badge"><i class="fas fa-chart-line"></i> Australian data & cloud specialists</span>
-        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;">Modernize with <span style="color:#0052D4;">Data, Cloud & Digital</span> Solutions</h1>
-        <p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 32px;">End-to-end digital, data, and IT services designed for Australian businesses. We combine cloud technologies with practical use cases to deliver efficiency, smarter decisions, and scalable growth.</p>
+      <div class="hero-content fade-up">
+        <span class="hero-badge"><i class="fas fa-shield-alt"></i> Cyber resilience + data-driven innovation</span>
+        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;">Defend, Transform & Scale with <span style="color:#0052D4;">Next-Gen Cybersecurity & Cloud</span></h1>
+        <p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 32px;">End-to-end digital, data, cloud, and proactive cybersecurity for Australian businesses. NDA protection & data sovereignty built-in.</p>
         <div>
-          <a href="#contact" class="btn-primary"><i class="fas fa-rocket"></i> Start your project</a>
-          <a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27d%20like%20to%20discuss%20services" class="btn-primary btn-whatsapp" style="margin-left: 16px; background: linear-gradient(105deg, #25D366, #128C7E);" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+          <a href="index.html#contact" class="btn-primary"><i class="fas fa-rocket"></i> Start your project</a>
+          <a href="https://wa.me/61410237261" class="btn-primary btn-whatsapp" style="margin-left: 16px;" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
       </div>
-      <div style="flex:1; text-align: center;">
-        <i class="fas fa-cloud-upload-alt" style="font-size: 11rem; color: #cbdffc;"></i>
+      <div style="flex:1; text-align: center;" class="fade-up">
+        <i class="fas fa-shield-virus" style="font-size: 11rem; color: #cbdffc; transition: transform 0.3s;"></i>
       </div>
     </div>
   </section>
 
-  <!-- Core Value Props -->
-  <div class="container">
-    <div class="card-grid" style="margin-top: -40px; margin-bottom: 20px;">
-      <div class="glass-card" style="padding: 32px;"><i class="fas fa-database feature-icon"></i><h3>Data Engineering</h3><p>Scalable pipelines, warehouses & lakes using Azure Data Factory, Databricks & SQL. Actionable insights, always available.</p></div>
-      <div class="glass-card" style="padding: 32px;"><i class="fas fa-robot feature-icon"></i><h3>Process Automation</h3><p>Eliminate manual work with Power Automate & Logic Apps. Automated reports, workflows and system integrations.</p></div>
-      <div class="glass-card" style="padding: 32px;"><i class="fas fa-chart-pie feature-icon"></i><h3>Analytics & BI</h3><p>Power BI dashboards to track KPIs, monitor performance, and drive real-time decisions tailored to your goals.</p></div>
+  <!-- Services Overview -->
+  <div class="container" style="margin-top: -30px; margin-bottom: 30px;">
+    <h2 class="section-title fade-up" style="text-align: center;">Our Core Services</h2>
+    <p class="section-sub fade-up" style="text-align: center; margin: 0 auto 40px;">Comprehensive technology solutions tailored for Australian enterprises</p>
+    
+    <div class="card-grid fade-up">
+      <a href="cybersecurity.html" class="glass-card service-card">
+        <i class="fas fa-shield-alt feature-icon"></i>
+        <h3>Cybersecurity</h3>
+        <p>Red team operations, threat hunting, incident response, DFIR, and compliance management for Australian businesses.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
+      <a href="network-services.html" class="glass-card service-card">
+        <i class="fas fa-network-wired feature-icon"></i>
+        <h3>Computer Network Services</h3>
+        <p>Enterprise network infrastructure, SD-WAN, cloud networking, managed operations, and storage solutions.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
+      <a href="data-analytics.html" class="glass-card service-card">
+        <i class="fas fa-database feature-icon"></i>
+        <h3>Data & Analytics</h3>
+        <p>Data pipelines, business intelligence, Power BI dashboards, and advanced analytics solutions.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
+      <a href="cloud-solutions.html" class="glass-card service-card">
+        <i class="fas fa-cloud feature-icon"></i>
+        <h3>Cloud Solutions</h3>
+        <p>Azure migration, modernization, cost-optimized architectures, and managed cloud services.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
+      <a href="digital-marketing.html" class="glass-card service-card">
+        <i class="fas fa-chart-line feature-icon"></i>
+        <h3>Digital Marketing</h3>
+        <p>SEO, paid advertising, marketing analytics, and conversion optimization for technology companies.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
+      <a href="automation.html" class="glass-card service-card">
+        <i class="fas fa-robot feature-icon"></i>
+        <h3>Process Automation</h3>
+        <p>Power Automate, RPA, Azure Logic Apps, and custom applications to eliminate manual work.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
+      <a href="training.html" class="glass-card service-card">
+        <i class="fas fa-chalkboard-teacher feature-icon"></i>
+        <h3>Training & Readiness</h3>
+        <p>Cybersecurity awareness, Azure certification prep, Power BI workshops, and custom training programs.</p>
+        <span class="learn-more">Learn more <i class="fas fa-arrow-right"></i></span>
+      </a>
     </div>
   </div>
 
-  <!-- Trusted by Australian Tech Leaders -->
-  <section style="padding: 20px 0 40px;">
-    <div class="container">
-      <div style="background: #eef3fc; border-radius: 48px; padding: 32px 24px; text-align: center;">
-        <h3 class="section-title" style="font-size:1.8rem;">Trusted by Australian Tech Leaders</h3>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; margin-top: 24px;">
-          <span class="badge-tag"><i class="fas fa-server"></i> Managed Service Providers</span>
-          <span class="badge-tag"><i class="fas fa-cloud"></i> SaaS & Software Vendors</span>
-          <span class="badge-tag"><i class="fas fa-lock"></i> Cybersecurity & Compliance</span>
-          <span class="badge-tag"><i class="fas fa-network-wired"></i> Cloud Migration & Infrastructure</span>
-        </div>
-        <p style="margin-top: 28px; color: #2b4b6f;">Tailored campaigns that engage CTOs, IT managers, developers — ensuring your message reaches the right audience with impact.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comprehensive Services Section -->
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title">Our Services: Data, Cloud & Digital Integration</h2>
-      <p class="section-sub">We provide end-to-end digital, data, and IT solutions that help businesses operate efficiently, make smarter decisions, and scale with confidence.</p>
-      <div id="data-engineering" style="margin-bottom: 60px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-          <div style="flex: 1; min-width: 280px;">
-            <i class="fas fa-database feature-icon" style="font-size: 3rem;"></i>
-            <h3 style="font-size: 2rem; margin-bottom: 12px;">Data Engineering & Analytics</h3>
-            <p style="color: #2c475e; margin-bottom: 20px;">Transform raw data into actionable insights with scalable systems. We build automated data pipelines, integrate multiple sources, and develop robust data warehouses and data lakes.</p>
-            <p><strong>Tools:</strong> Azure Data Factory, Databricks, SQL-based systems</p>
-            <p><strong>BI & Dashboards:</strong> Interactive Power BI reports for real-time KPI tracking.</p>
-          </div>
-          <div style="flex: 1; text-align: center;"><i class="fas fa-chart-bar" style="font-size: 10rem; color: #d4e2fc;"></i></div>
-        </div>
-      </div>
-      <div id="automation" style="margin-bottom: 60px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-          <div style="flex: 1; text-align: center;"><i class="fas fa-cogs" style="font-size: 10rem; color: #d4e2fc;"></i></div>
-          <div style="flex: 1; min-width: 280px;">
-            <i class="fas fa-robot feature-icon" style="font-size: 3rem;"></i>
-            <h3 style="font-size: 2rem; margin-bottom: 12px;">Business Process Automation</h3>
-            <p style="color: #2c475e; margin-bottom: 20px;">Automate repetitive tasks using Power Automate and Azure Logic Apps, reducing errors and improving efficiency.</p>
-          </div>
-        </div>
-      </div>
-      <div id="cloud" style="margin-bottom: 60px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-          <div style="flex: 1; min-width: 280px;">
-            <i class="fas fa-cloud-upload-alt feature-icon" style="font-size: 3rem;"></i>
-            <h3 style="font-size: 2rem; margin-bottom: 12px;">Cloud Solutions & Migration</h3>
-            <p style="color: #2c475e; margin-bottom: 20px;">Modernize IT infrastructure with secure, scalable cloud architectures. Smooth transitions to Microsoft Azure.</p>
-          </div>
-          <div style="flex: 1; text-align: center;"><i class="fas fa-server" style="font-size: 10rem; color: #d4e2fc;"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Digital Marketing Section -->
-  <section id="marketing" style="background: #f6fafd;">
-    <div class="container">
-      <h2 class="section-title">Digital Marketing & Analytics</h2>
-      <p class="section-sub">Performance-focused marketing combined with data analytics. Every campaign measured, analyzed, and refined.</p>
-      <div class="card-grid">
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-search feature-icon"></i><h3>SEO for Tech Audiences</h3><p>High-intent keywords reaching decision-makers across Australia.</p></div>
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-ad feature-icon"></i><h3>Paid Advertising</h3><p>Smart bidding on Google, LinkedIn & industry channels.</p></div>
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-chart-line feature-icon"></i><h3>Campaign Analytics</h3><p>Complete visibility with performance dashboards.</p></div>
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-bullseye feature-icon"></i><h3>Data-Driven Strategy</h3><p>Every marketing dollar measured for impact.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Training & Consulting -->
-  <section id="training">
-    <div class="container">
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-        <div style="flex: 1; min-width: 280px;">
-          <h2 class="section-title">Training & Consulting</h2>
-          <p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 24px;">Empower your team with practical, hands-on sessions on data and cloud technologies.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-            <span class="badge-tag"><i class="fas fa-database"></i> SQL & Data Analytics</span>
-            <span class="badge-tag"><i class="fas fa-cloud"></i> Cloud Technologies</span>
-            <span class="badge-tag"><i class="fas fa-chart-pie"></i> BI Tools</span>
-          </div>
-          <a href="#contact" class="btn-primary" style="margin-top: 20px;"><i class="fas fa-chalkboard-teacher"></i> Enquire about training</a>
-        </div>
-        <div style="flex: 1; text-align: center;"><i class="fas fa-users-cog" style="font-size: 12rem; color: #cbdffc;"></i></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IT Support & Metrics -->
-  <section id="it-services" style="background: #ffffff;">
-    <div class="container">
-      <h2 class="section-title">IT Support & Managed Services</h2>
-      <div class="card-grid">
-        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-headset feature-icon"></i><h3>IT Helpdesk Support</h3><p>L1/L2/L3 support, ticket resolution, remote assistance.</p></div></div>
-        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-wifi feature-icon"></i><h3>Network Support</h3><p>LAN/WAN/Wi-Fi, VPN, monitoring & optimisation.</p></div></div>
-        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-shield-alt feature-icon"></i><h3>Security Support</h3><p>Endpoint protection, patch management, compliance.</p></div></div>
-      </div>
-      <div class="metrics-flex" style="margin-top: 40px;">
-        <div class="metric-item"><span class="counter-num" data-target="99">0</span>%<h4>SLA Compliance</h4></div>
-        <div class="metric-item"><span class="counter-num" data-target="87">0</span>%<h4>First-Call Resolution</h4></div>
-        <div class="metric-item"><span class="counter-num" data-target="99.99">0</span>%<h4>Network Uptime</h4></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients & Case Study -->
+  <!-- Compliance Section -->
   <section id="clients">
-    <div class="container">
-      <h2 class="section-title">Trusted by Australian Technology Leaders</h2>
-      <div class="glass-card" style="padding: 36px;">
-        <h3><i class="fas fa-shield-alt"></i> Case Study: Cybersecurity Services Provider</h3>
-        <p>Result: 40% faster resolution, enhanced security posture.</p>
+    <div class="container fade-up">
+      <div class="glass-card" style="padding: 48px; text-align: center;">
+        <i class="fas fa-shield-alt" style="font-size: 3rem; color: #0052D4; margin-bottom: 20px;"></i>
+        <h2 class="section-title" style="margin-bottom: 20px;">Trusted by Australian Leaders</h2>
+        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">A financial services client reduced security incidents by 70% and achieved APRA CPS 234 compliance after our red team exercise and security program overhaul. All engagements protected by strict NDAs and data sovereignty guarantees.</p>
+        <div class="compliance-badge" style="margin-top: 30px;">
+          <i class="fas fa-file-signature"></i> <strong>NDA & Compliance First:</strong> Data residency, ISO 27001, APRA, Privacy Act – we align with your frameworks.
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Office + WhatsApp CTA -->
-  <section style="background: #F9FCFE;">
-    <div class="container">
-      <div class="glass-card" style="text-align: center; padding: 32px;">
-        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
-        <h3>Australian Office</h3>
-        <p>C/o Deepak Paraye, 1/7 Dunstan Street, Clayton VIC 3168, Melbourne</p>
-        <p><i class="fas fa-envelope"></i> deepak.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +61 0 410 237 261</p>
-        <div style="margin-top: 20px;">
-          <a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%20have%20a%20question%20about%20your%20services" target="_blank" class="btn-primary btn-whatsapp" style="background: linear-gradient(105deg, #25D366, #128C7E); display: inline-flex;"><i class="fab fa-whatsapp"></i> Message us on WhatsApp</a>
-        </div>
-         </div>
- 
-  <div class="glass-card" style="margin-top: 40px; text-align: center; padding: 32px;">
-        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
-        <h3>Indian Office</h3>
-        <p>C/o Avi Patmase, Plot No. 121 B Shri Purna Layout Dabha Nagpur 440023, Nagpur, Maharashtra, India</p>
-        <p><i class="fas fa-envelope"></i> avi.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +91 920 163 7371</p>
-    <div style="margin-top: 20px;">
-          <a href="https://wa.me/919201637371?text=Hello%20Digital%20IT%20Move%2C%20I%20have%20a%20question%20about%20your%20services" target="_blank" class="btn-primary btn-whatsapp" style="background: linear-gradient(105deg, #25D366, #128C7E); display: inline-flex;"><i class="fab fa-whatsapp"></i> Message us on WhatsApp</a>
-        </div>
-      </div>
-<div class="glass-card" style="margin-top: 40px; text-align: center; padding: 32px;">
-        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
-        <h3>U.A.E.
-
- Office</h3>
-        <p>C/o Sneha Kohale, D 102 China Cluster International City Dubai, United Arab Emirates (UAE)</p>
-        <p><i class="fas fa-envelope"></i> sneha.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +91 898 315 3097</p>
-      </div>
-     
- 
-    </div>
-  </section>
-
-  <!-- Contact Form with Word File Saving -->
+  <!-- Contact -->
   <section id="contact">
-    <div class="container">
+    <div class="container fade-up">
       <div style="display: flex; flex-wrap: wrap; gap: 48px;">
         <div style="flex:1">
-          <h2 class="section-title">Let’s Transform Your Business</h2>
-          <p>Get a tailored strategy for data, cloud, automation or digital marketing.</p>
+          <h2 class="section-title">Let's Secure Your Business</h2>
+          <p>Confidential consultation. NDAs honored. Contact us to discuss your specific challenges and how we can help.</p>
           <div style="margin-top: 24px;">
-            <a href="https://wa.me/61410237261?text=I%27m%20interested%20in%20Digital%20IT%20Move%20services" target="_blank" class="btn-outline" style="border-color:#25D366; color:#25D366;"><i class="fab fa-whatsapp"></i> WhatsApp +61 410 237 261</a>
+            <a href="https://wa.me/61410237261" class="btn-outline" style="border-color:#25D366; color:#25D366;"><i class="fab fa-whatsapp"></i> WhatsApp +61 410 237 261</a>
+          </div>
+          <div style="margin-top: 30px;">
+            <i class="fas fa-envelope"></i> hello@digitalitmove.com.au<br>
+            <i class="fas fa-map-marker-alt"></i> Melbourne, Sydney, Brisbane, Australia-wide
           </div>
         </div>
         <div style="flex:1">
-          <form id="contactForm" class="contact-form">
-            <input type="text" placeholder="Full name" id="nameField" required>
-            <input type="email" placeholder="Business email" id="emailField" required>
-            <textarea rows="3" placeholder="Tell us about your data, cloud or IT needs..." id="msgField"></textarea>
-            <button type="submit" id="sendBtn" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send enquiry </button>
-            <p id="formFeedback" style="margin-top: 16px; font-size:0.9rem; text-align:center;"></p>
+          <form id="contactForm">
+            <input type="text" placeholder="Full name" id="nameField" required style="width:100%; padding:14px; border-radius:28px; border:1px solid #cfdfed; margin-bottom:16px;">
+            <input type="email" placeholder="Business email" id="emailField" required style="width:100%; padding:14px; border-radius:28px; border:1px solid #cfdfed; margin-bottom:16px;">
+            <input type="tel" placeholder="Phone (optional)" id="phoneField" style="width:100%; padding:14px; border-radius:28px; border:1px solid #cfdfed; margin-bottom:16px;">
+            <textarea rows="3" placeholder="Tell us about your needs..." id="msgField" style="width:100%; padding:14px; border-radius:28px; border:1px solid #cfdfed; margin-bottom:16px;"></textarea>
+            <button type="submit" id="sendBtn" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
+            <p id="formFeedback" style="margin-top:16px; text-align:center;"></p>
           </form>
         </div>
       </div>
@@ -626,107 +563,126 @@
 </main>
 
 <footer>
-  <div class="container" style="text-align: center;">
-    <p>© 2025 Digital IT Move – Bridging data, cloud & strategic growth across Australia.</p>
-    <div style="display: flex; justify-content: center; gap: 28px; font-size: 1.4rem; margin-top: 16px;">
-      <i class="fab fa-linkedin"></i> <i class="fab fa-twitter"></i> <i class="fab fa-facebook"></i>
-      <a href="https://wa.me/61410237261?text=Hi%20Digital%20IT%20Move" style="color:#cbd5e1; transition:0.2s;" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <div style="margin-top: 20px; font-size: 0.85rem;">
-      <i class="fab fa-whatsapp"></i> WhatsApp: +61 410 237 261
+  <div class="container">
+    <p>© 2025 Digital IT Move – Cybersecurity, Data, Cloud & Growth Australia</p>
+    <div style="margin-top: 16px;">
+      <i class="fab fa-whatsapp"></i> +61 410 237 261 &nbsp;|&nbsp;
+      <i class="fas fa-envelope"></i> hello@digitalitmove.com.au &nbsp;|&nbsp;
+      <i class="fas fa-shield-alt"></i> Data Sovereignty Guaranteed
     </div>
   </div>
 </footer>
 
 <script>
   (function() {
-    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    if(menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+    
+    if(menuBtn) {
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+    }
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const dropdown = document.getElementById('servicesDropdown');
+    let isDropdownOpen = false;
+    
+    if (dropdownToggle && dropdownMenu) {
+      dropdownToggle.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if(target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+        e.stopPropagation();
+        isDropdownOpen = !isDropdownOpen;
+        
+        if (isDropdownOpen) {
+          dropdownMenu.classList.add('show');
+          const chevron = this.querySelector('.fa-chevron-down');
+          if (chevron) chevron.style.transform = 'rotate(180deg)';
+        } else {
+          dropdownMenu.classList.remove('show');
+          const chevron = this.querySelector('.fa-chevron-down');
+          if (chevron) chevron.style.transform = 'rotate(0deg)';
         }
       });
-    });
 
-    // Counters animation
-    function startCounters() {
-      document.querySelectorAll('.counter-num').forEach(counter => {
-        if(counter.getAttribute('data-counted') === 'true') return;
-        const target = parseFloat(counter.getAttribute('data-target'));
-        if(isNaN(target)) return;
-        let current = 0;
-        const increment = target / 45;
-        const update = () => {
-          current += increment;
-          if(current < target) {
-            counter.innerText = Math.floor(current);
-            requestAnimationFrame(update);
-          } else { counter.innerText = target; }
-        };
-        update();
-        counter.setAttribute('data-counted', 'true');
+      document.addEventListener('click', function(e) {
+        if (dropdown && !dropdown.contains(e.target)) {
+          dropdownMenu.classList.remove('show');
+          isDropdownOpen = false;
+          const chevron = dropdownToggle.querySelector('.fa-chevron-down');
+          if (chevron) chevron.style.transform = 'rotate(0deg)';
+        }
       });
     }
-    window.addEventListener('load', () => {
-      startCounters();
-      document.querySelectorAll('.fade-up').forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('visible');
-      });
-    });
 
-    // Save enquiry to Word file (aviword.docx)
-    function saveEnquiryToWord(name, email, message) {
-      const timestamp = new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' });
-      const docHtml = `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Enquiry from Digital IT Move</title>
-<style>
-body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; margin: 40px; line-height: 1.6; }
-h1 { color: #0052D4; border-bottom: 2px solid #0052D4; padding-bottom: 8px; }
-.details { background: #f5f7fa; padding: 20px; border-radius: 12px; margin: 20px 0; }
-.field { margin: 12px 0; }
-.label { font-weight: bold; color: #1A2C3E; min-width: 120px; display: inline-block; }
-.value { color: #2c3e50; }
-.footer { margin-top: 30px; font-size: 12px; color: #7f8c8d; border-top: 1px solid #ddd; padding-top: 15px; }
-.whatsapp { background: #25D36610; padding: 10px; border-radius: 12px; margin-top: 15px; }
-</style>
-</head>
-<body>
-<h1>📋 New Enquiry - Digital IT Move</h1>
-<div class="details">
-  <div class="field"><span class="label">📛 Full Name:</span> <span class="value">${escapeHtml(name)}</span></div>
-  <div class="field"><span class="label">✉️ Email:</span> <span class="value">${escapeHtml(email)}</span></div>
-  <div class="field"><span class="label">💬 Message:</span> <div class="value" style="margin-top: 8px; background: #fff; padding: 12px; border-radius: 8px;">${escapeHtml(message)}</div></div>
-  <div class="field"><span class="label">🕒 Submitted:</span> <span class="value">${timestamp}</span></div>
-</div>
-<div class="whatsapp">
-  <strong>💬 WhatsApp Contact:</strong> +61 410 237 261
-</div>
-<div class="footer">
-  <p>This enquiry was generated from the Digital IT Move website contact form.</p>
-  <p>📧 Respond to: ${escapeHtml(email)}</p>
-</div>
-</body>
-</html>`;
-      const blob = new Blob([docHtml], { type: 'application/msword' });
-      saveAs(blob, 'aviword.docx');
-      return true;
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
     
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const form = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const feedback = document.getElementById('formFeedback');
+    
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('nameField').value.trim();
+        const email = document.getElementById('emailField').value.trim();
+        const phone = document.getElementById('phoneField').value.trim();
+        const msg = document.getElementById('msgField').value.trim() || 'No message provided';
+        
+        if (!name || !email) {
+          feedback.innerHTML = '<span class="feedback-error">Please fill in both name and email.</span>';
+          return;
+        }
+        
+        const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          feedback.innerHTML = '<span class="feedback-error">Please enter a valid email address.</span>';
+          return;
+        }
+        
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = '<span class="spinner"></span> Sending...';
+        
+        try {
+          const timestamp = new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' });
+          const docHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Enquiry Digital IT Move</title></head><body><h1>New Enquiry - Digital IT Move</h1><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Phone:</strong> ${escapeHtml(phone)}</p><p><strong>Message:</strong> ${escapeHtml(msg)}</p><p><strong>Timestamp:</strong> ${timestamp}</p></body></html>`;
+          const blob = new Blob([docHtml], { type: 'application/msword' });
+          saveAs(blob, `DigitalITMove_Enquiry_${name.replace(/\s/g, '_')}.doc`);
+          
+          let enquiries = [];
+          try {
+            const stored = localStorage.getItem('digitalITMove_enquiries');
+            if (stored) enquiries = JSON.parse(stored);
+          } catch(e) {}
+          enquiries.push({ name, email, phone, message: msg, timestamp: new Date().toISOString() });
+          localStorage.setItem('digitalITMove_enquiries', JSON.stringify(enquiries));
+          
+          feedback.innerHTML = '<span class="feedback-success">✅ Enquiry saved! We\'ll respond within 24 hours.</span>';
+          form.reset();
+        } catch (ex) {
+          feedback.innerHTML = '<span class="feedback-error">Error saving enquiry. Please contact us via WhatsApp.</span>';
+        } finally {
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Enquiry';
+          setTimeout(() => {
+            if (feedback) feedback.innerHTML = '';
+          }, 6000);
+        }
+      });
+    }
+
     function escapeHtml(str) {
-      if (!str) return '';
       return str.replace(/[&<>]/g, function(m) {
         if (m === '&') return '&amp;';
         if (m === '<') return '&lt;';
@@ -735,69 +691,11 @@ h1 { color: #0052D4; border-bottom: 2px solid #0052D4; padding-bottom: 8px; }
       });
     }
 
-    const contactForm = document.getElementById('contactForm');
-    const sendBtn = document.getElementById('sendBtn');
-    const feedbackDiv = document.getElementById('formFeedback');
-    
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('nameField').value.trim();
-      const email = document.getElementById('emailField').value.trim();
-      const message = document.getElementById('msgField').value.trim() || 'No specific message provided.';
-      
-      if (!name || !email) {
-        feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-exclamation-triangle"></i> Please fill name and email.</span>';
-        return;
-      }
-      const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-envelope"></i> Please enter a valid business email.</span>';
-        return;
-      }
-      
-      sendBtn.disabled = true;
-      sendBtn.innerHTML = '<span class="spinner"></span> Saving to Word file...';
-      feedbackDiv.innerHTML = '';
-      
-      try {
-        saveEnquiryToWord(name, email, message);
-        let allEnquiries = [];
-        try {
-          const stored = localStorage.getItem('digitalITMove_enquiries');
-          if(stored) allEnquiries = JSON.parse(stored);
-        } catch(e) {}
-        allEnquiries.push({ name, email, message, timestamp: new Date().toISOString() });
-        localStorage.setItem('digitalITMove_enquiries', JSON.stringify(allEnquiries));
-        
-        feedbackDiv.innerHTML = '<span class="feedback-success"><i class="fas fa-check-circle"></i> ✅ Enquiry saved to <strong>aviword.docx</strong> (downloaded). Our team will contact you soon! You can also WhatsApp us at +61 410 237 261.</span>';
-        contactForm.reset();
-      } catch (error) {
-        console.error(error);
-        feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-times-circle"></i> Unable to save Word file. Please try again or reach us on WhatsApp.</span>';
-      } finally {
-        sendBtn.disabled = false;
-        sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send enquiry & Save to Word';
-        setTimeout(() => {
-          if(feedbackDiv.innerHTML) setTimeout(() => { if(feedbackDiv) feedbackDiv.innerHTML = ''; }, 6000);
-        }, 5000);
+    document.addEventListener('click', function(e) {
+      if (navLinks && navLinks.classList.contains('active') && !e.target.closest('nav')) {
+        navLinks.classList.remove('active');
       }
     });
-    
-    const localLogoPath = "file:///C:/Users/AivxT/Desktop/company%20Startup/website/logo.png";
-    document.querySelectorAll('.logo-img').forEach(img => {
-      img.src = localLogoPath;
-      img.onerror = () => {};
-    });
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.glass-card, .metrics-flex, .hero').forEach(el => observer.observe(el));
   })();
 </script>
 </body>
